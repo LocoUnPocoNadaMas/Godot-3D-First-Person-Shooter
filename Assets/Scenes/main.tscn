@@ -1,0 +1,182 @@
+[gd_scene load_steps=7 format=3 uid="uid://dpfyci073cq2j"]
+
+[ext_resource type="ArrayMesh" uid="uid://lxc24m8kca87" path="res://Assets/Models/Environment/Ground.obj" id="1_ptyf8"]
+[ext_resource type="PackedScene" uid="uid://bbfhvg0rokkpv" path="res://Assets/Prefabs/tree_1.tscn" id="2_nbkhu"]
+[ext_resource type="PackedScene" uid="uid://bed7lfd5q83v3" path="res://Assets/Prefabs/tree_2.tscn" id="3_ierra"]
+[ext_resource type="PackedScene" uid="uid://bi3alnuhwyyw" path="res://Assets/Prefabs/fence.tscn" id="4_hoing"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_g7mlr"]
+data = PackedVector3Array(0, 0, 0, 3, 0.3, 0, 3, 0, 0, 3, 0.3, 0, 0, 0, 0, 0, 0.3, 0, 0, 0.3, -3, 3, 0.3, 0, 0, 0.3, 0, 3, 0.3, 0, 0, 0.3, -3, 3, 0.3, -3, 3, 0, -3, 3, 0.3, 0, 3, 0.3, -3, 3, 0.3, 0, 3, 0, -3, 3, 0, 0, 3, 0, -3, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, -3, 0, 0, -3, 0, 0.3, -3, 0, 0, 0, 0, 0, -3, 0, 0, 0, 0, 0.3, -3, 0, 0.3, 0, 3, 0, -3, 0, 0.3, -3, 0, 0, -3, 0, 0.3, -3, 3, 0, -3, 3, 0.3, -3)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rgnt4"]
+data = PackedVector3Array(0, 0, 0, 3, 0.3, 0, 3, 0, 0, 3, 0.3, 0, 0, 0, 0, 0, 0.3, 0, 0, 0.3, -3, 3, 0.3, 0, 0, 0.3, 0, 3, 0.3, 0, 0, 0.3, -3, 3, 0.3, -3, 3, 0, -3, 3, 0.3, 0, 3, 0.3, -3, 3, 0.3, 0, 3, 0, -3, 3, 0, 0, 3, 0, -3, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, -3, 0, 0, -3, 0, 0.3, -3, 0, 0, 0, 0, 0, -3, 0, 0, 0, 0, 0.3, -3, 0, 0.3, 0, 3, 0, -3, 0, 0.3, -3, 0, 0, -3, 0, 0.3, -3, 3, 0, -3, 3, 0.3, -3)
+
+[node name="Main" type="Node3D"]
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="Ground" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, -15, -0.3, 15)
+mesh = ExtResource("1_ptyf8")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment/Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Ground/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_g7mlr")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Environment/Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Ground/StaticBody3D2"]
+shape = SubResource("ConcavePolygonShape3D_rgnt4")
+
+[node name="Trees" type="Node3D" parent="Environment"]
+
+[node name="Tree1" parent="Environment/Trees" instance=ExtResource("2_nbkhu")]
+transform = Transform3D(0.695863, 0, -0.718175, 0, 1, 0, 0.718175, 0, 0.695863, 6.51923, -7.7486e-07, 5.45463)
+skeleton = NodePath("../../..")
+
+[node name="Tree8" parent="Environment/Trees" instance=ExtResource("2_nbkhu")]
+transform = Transform3D(-0.082095, 0, 0.996624, 0, 1, 0, -0.996624, 0, -0.082095, -8.56204, -7.7486e-07, 11.3762)
+skeleton = NodePath("../../..")
+
+[node name="Tree7" parent="Environment/Trees" instance=ExtResource("2_nbkhu")]
+transform = Transform3D(-0.531354, 0, -0.84715, 0, 1, 0, 0.84715, 0, -0.531354, 2.30197, -7.7486e-07, -2.00078)
+skeleton = NodePath("../../..")
+
+[node name="Tree3" parent="Environment/Trees" instance=ExtResource("2_nbkhu")]
+transform = Transform3D(-0.999645, 0, 0.0266305, 0, 1, 0, -0.0266305, 0, -0.999645, -5.57733, -7.7486e-07, -7.77711)
+skeleton = NodePath("../../..")
+
+[node name="Tree5" parent="Environment/Trees" instance=ExtResource("2_nbkhu")]
+skeleton = NodePath("../../..")
+
+[node name="Tree2" parent="Environment/Trees" instance=ExtResource("3_ierra")]
+transform = Transform3D(0.000837759, 0, 1, 0, 1, 0, -1, 0, 0.000837759, 10.9282, -2.68221e-06, 4.28881)
+skeleton = NodePath("../../..")
+
+[node name="Tree9" parent="Environment/Trees" instance=ExtResource("3_ierra")]
+transform = Transform3D(-0.917519, 0, -0.397692, 0, 1, 0, 0.397692, 0, -0.917519, 11.9122, -2.68221e-06, 10.6821)
+skeleton = NodePath("../../..")
+
+[node name="Tree4" parent="Environment/Trees" instance=ExtResource("3_ierra")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.23296, -2.68221e-06, 11.09)
+skeleton = NodePath("../../..")
+
+[node name="Tree6" parent="Environment/Trees" instance=ExtResource("3_ierra")]
+transform = Transform3D(0.631799, 0, 0.775132, 0, 1, 0, -0.775132, 0, 0.631799, 7.23717, -2.68221e-06, -10.5994)
+skeleton = NodePath("../../..")
+
+[node name="Border" type="Node3D" parent="Environment"]
+
+[node name="Fence" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.7307)
+
+[node name="Fence2" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.18501, 0, -14.7307)
+
+[node name="Fence3" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.41605, 0, -14.7307)
+
+[node name="Fence4" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.59377, 0, -14.7307)
+
+[node name="Fence6" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.796, 0, -12.4889)
+
+[node name="Fence7" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.796, 0, -9.38121)
+
+[node name="Fence8" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.796, 0, -6.29868)
+
+[node name="Fence9" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.796, 0, -3.14796)
+
+[node name="Fence5" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 12.6473, 0, -14.7307)
+
+[node name="Fence28" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(-1, 0, -0.000698241, 0, 1, 0, 0.000698241, 0, -1, 0.0379629, 0, 14.7399)
+
+[node name="Fence29" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(-1, 0, -0.000698241, 0, 1, 0, 0.000698241, 0, -1, -3.14704, 0, 14.7421)
+
+[node name="Fence30" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(-1, 0, -0.000698241, 0, 1, 0, 0.000698241, 0, -1, -6.37809, 0, 14.7443)
+
+[node name="Fence31" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(-1, 0, -0.000698241, 0, 1, 0, 0.000698241, 0, -1, -9.55581, 0, 14.7466)
+
+[node name="Fence32" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(-0.000698197, 0, 1, 0, 1, 0, -1, 0, -0.000698197, -14.7596, 0, 12.5084)
+
+[node name="Fence33" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(-0.000698197, 0, 1, 0, 1, 0, -1, 0, -0.000698197, -14.7618, 0, 9.4007)
+
+[node name="Fence34" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(-0.000698197, 0, 1, 0, 1, 0, -1, 0, -0.000698197, -14.764, 0, 6.31817)
+
+[node name="Fence35" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(-0.000698197, 0, 1, 0, 1, 0, -1, 0, -0.000698197, -14.7662, 0, 3.16745)
+
+[node name="Fence36" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(-0.7076, 0, 0.706613, 0, 1, 0, -0.706613, 0, -0.7076, -12.6093, 0, 14.7487)
+
+[node name="Fence19" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(-0.00942466, 0, 0.999956, 0, 1, 0, -0.999956, 0, -0.00942466, -14.5553, 0, 0.198004)
+
+[node name="Fence20" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(-0.00942466, 0, 0.999956, 0, 1, 0, -0.999956, 0, -0.00942466, -14.5853, 0, -2.98686)
+
+[node name="Fence21" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(-0.00942466, 0, 0.999956, 0, 1, 0, -0.999956, 0, -0.00942466, -14.6157, 0, -6.21776)
+
+[node name="Fence22" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(-0.00942466, 0, 0.999956, 0, 1, 0, -0.999956, 0, -0.00942466, -14.6457, 0, -9.39534)
+
+[node name="Fence23" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(0.999956, 0, 0.00942462, 0, 1, 0, -0.00942462, 0, 0.999956, -12.453, 0, -14.6185)
+
+[node name="Fence24" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(0.999956, 0, 0.00942462, 0, 1, 0, -0.00942462, 0, 0.999956, -9.34546, 0, -14.6478)
+
+[node name="Fence25" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(0.999956, 0, 0.00942462, 0, 1, 0, -0.00942462, 0, 0.999956, -6.26307, 0, -14.6769)
+
+[node name="Fence26" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(0.999956, 0, 0.00942462, 0, 1, 0, -0.00942462, 0, 0.999956, -3.11248, 0, -14.7066)
+
+[node name="Fence27" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(0.700411, 0, 0.71374, 0, 1, 0, -0.71374, 0, 0.700411, -14.6745, 0, -12.4487)
+
+[node name="Fence10" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(-0.00907568, 0, -0.999959, 0, 1, 0, 0.999959, 0, -0.00907568, 14.7904, 0, -0.0161648)
+
+[node name="Fence11" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(-0.00907568, 0, -0.999959, 0, 1, 0, 0.999959, 0, -0.00907568, 14.7615, 0, 3.16871)
+
+[node name="Fence12" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(-0.00907568, 0, -0.999959, 0, 1, 0, 0.999959, 0, -0.00907568, 14.7322, 0, 6.39962)
+
+[node name="Fence13" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(-0.00907568, 0, -0.999959, 0, 1, 0, 0.999959, 0, -0.00907568, 14.7034, 0, 9.57721)
+
+[node name="Fence14" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(-0.999959, 0, 0.00907567, 0, 1, 0, -0.00907567, 0, -0.999959, 12.4144, 0, 14.7589)
+
+[node name="Fence15" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(-0.999959, 0, 0.00907567, 0, 1, 0, -0.00907567, 0, -0.999959, 9.3069, 0, 14.7307)
+
+[node name="Fence16" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(-0.999959, 0, 0.00907567, 0, 1, 0, -0.00907567, 0, -0.999959, 6.23594, 0, 14.7027)
+
+[node name="Fence17" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(-0.999959, 0, 0.00907567, 0, 1, 0, -0.00907567, 0, -0.999959, 3.08534, 0, 14.6742)
+
+[node name="Fence18" parent="Environment/Border" instance=ExtResource("4_hoing")]
+transform = Transform3D(-0.713495, 0, -0.70066, 0, 1, 0, 0.70066, 0, -0.713495, 14.6757, 0, 12.6306)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, -0.612372, 0.353553, 0, 0.5, 0.866025, -0.707107, -0.612372, 0.353553, 0, 18.4345, 0)
+shadow_enabled = true
