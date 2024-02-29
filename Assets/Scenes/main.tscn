@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dpfyci073cq2j"]
+[gd_scene load_steps=11 format=3 uid="uid://dpfyci073cq2j"]
 
 [ext_resource type="ArrayMesh" uid="uid://lxc24m8kca87" path="res://Assets/Models/Environment/Ground.obj" id="1_ptyf8"]
 [ext_resource type="PackedScene" uid="uid://bbfhvg0rokkpv" path="res://Assets/Prefabs/tree_1.tscn" id="2_nbkhu"]
@@ -11,6 +11,19 @@ data = PackedVector3Array(0, 0, 0, 3, 0.3, 0, 3, 0, 0, 3, 0.3, 0, 0, 0, 0, 0, 0.
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rgnt4"]
 data = PackedVector3Array(0, 0, 0, 3, 0.3, 0, 3, 0, 0, 3, 0.3, 0, 0, 0, 0, 0, 0.3, 0, 0, 0.3, -3, 3, 0.3, 0, 0, 0.3, 0, 3, 0.3, 0, 0, 0.3, -3, 3, 0.3, -3, 3, 0, -3, 3, 0.3, 0, 3, 0.3, -3, 3, 0.3, 0, 3, 0, -3, 3, 0, 0, 3, 0, -3, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, -3, 0, 0, -3, 0, 0.3, -3, 0, 0, 0, 0, 0, -3, 0, 0, 0, 0, 0.3, -3, 0, 0.3, 0, 3, 0, -3, 0, 0.3, -3, 0, 0, -3, 0, 0.3, -3, 3, 0, -3, 3, 0.3, -3)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xfa66"]
+sky_top_color = Color(0.521569, 0.721569, 0.886275, 1)
+sky_horizon_color = Color(0.945098, 0.937255, 0.980392, 1)
+ground_bottom_color = Color(0.329412, 0.501961, 0.494118, 1)
+ground_horizon_color = Color(0.494118, 0.682353, 0.698039, 1)
+
+[sub_resource type="Sky" id="Sky_u7m1e"]
+sky_material = SubResource("ProceduralSkyMaterial_xfa66")
+
+[sub_resource type="Environment" id="Environment_kh4hb"]
+background_mode = 2
+sky = SubResource("Sky_u7m1e")
 
 [node name="Main" type="Node3D"]
 
@@ -184,3 +197,6 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("5_8t5fe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.22803, -7.7486e-07, -0.969666)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kh4hb")
