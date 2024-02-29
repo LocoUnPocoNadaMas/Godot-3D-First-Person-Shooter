@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dpfyci073cq2j"]
+[gd_scene load_steps=8 format=3 uid="uid://dpfyci073cq2j"]
 
 [ext_resource type="ArrayMesh" uid="uid://lxc24m8kca87" path="res://Assets/Models/Environment/Ground.obj" id="1_ptyf8"]
 [ext_resource type="PackedScene" uid="uid://bbfhvg0rokkpv" path="res://Assets/Prefabs/tree_1.tscn" id="2_nbkhu"]
 [ext_resource type="PackedScene" uid="uid://bed7lfd5q83v3" path="res://Assets/Prefabs/tree_2.tscn" id="3_ierra"]
 [ext_resource type="PackedScene" uid="uid://bi3alnuhwyyw" path="res://Assets/Prefabs/fence.tscn" id="4_hoing"]
+[ext_resource type="PackedScene" uid="uid://cxt7f6s0obj40" path="res://Assets/Prefabs/player.tscn" id="5_8t5fe"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_g7mlr"]
 data = PackedVector3Array(0, 0, 0, 3, 0.3, 0, 3, 0, 0, 3, 0.3, 0, 0, 0, 0, 0, 0.3, 0, 0, 0.3, -3, 3, 0.3, 0, 0, 0.3, 0, 3, 0.3, 0, 0, 0.3, -3, 3, 0.3, -3, 3, 0, -3, 3, 0.3, 0, 3, 0.3, -3, 3, 0.3, 0, 3, 0, -3, 3, 0, 0, 3, 0, -3, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, -3, 0, 0, -3, 0, 0.3, -3, 0, 0, 0, 0, 0, -3, 0, 0, 0, 0, 0.3, -3, 0, 0.3, 0, 3, 0, -3, 0, 0.3, -3, 0, 0, -3, 0, 0.3, -3, 3, 0, -3, 3, 0.3, -3)
@@ -180,3 +181,6 @@ transform = Transform3D(-0.713495, 0, -0.70066, 0, 1, 0, 0.70066, 0, -0.713495, 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707107, -0.612372, 0.353553, 0, 0.5, 0.866025, -0.707107, -0.612372, 0.353553, 0, 18.4345, 0)
 shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("5_8t5fe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.22803, -7.7486e-07, -0.969666)
