@@ -33,17 +33,21 @@ public partial class Player : CharacterBody3D
     // Components
     private Camera3D _camera3D;
     private Node3D _muzzle;
+    private PackedScene _bulletScene;
 
     public override void _Ready()
     {
         _camera3D = GetNode<Camera3D>("Camera3D");
         _muzzle = GetNode<Node3D>("Camera3D/Gun/Muzzle");
-        if (_camera3D.Equals(null) || _muzzle.Equals(null))
-        {
-            GD.PushError("null");
-        }
         // Hide and lock Mouse cursor
         Input.MouseMode = Input.MouseModeEnum.Captured;
+        _bulletScene = ResourceLoader.Load<PackedScene>("res://Assets/Prefabs/bullet.tscn");
+        
+        if ((_camera3D == null) || _muzzle == null || _bulletScene == null)
+        {
+            GD.PushError("null");
+            GetTree().Quit();
+        }
     }
 
     public override void _PhysicsProcess(double delta)
@@ -109,5 +113,17 @@ public partial class Player : CharacterBody3D
         
         // Reset Mouse delta vector
         _mouseDelta = new Vector2();
+        
+        // Check if we have shoot
+        if(Input.IsActionJustPressed("shoot") && _ammo > 0)
+            Shoot();
+    }
+
+    private void Shoot()
+    {
+        var bullet = _bulletScene.Instantiate<Node3D>();
+        GetNode("/root/Main").AddChild(bullet);
+        bullet.GlobalTransform = _muzzle.GlobalTransform;
+        _ammo -= 1;
     }
 }
