@@ -126,4 +126,16 @@ public partial class Player : CharacterBody3D
         bullet.GlobalTransform = _muzzle.GlobalTransform;
         _ammo -= 1;
     }
+
+    public void TakeDamage(int damage)
+    {
+        _curHp -= damage;
+        if (_curHp <= 0)
+            Die();
+    }
+
+    private void Die()
+    {
+        GetTree().ReloadCurrentScene();
+    }
 }
