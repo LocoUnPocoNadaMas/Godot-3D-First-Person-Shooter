@@ -27,6 +27,8 @@ public partial class Player : CharacterBody3D
     private Vector3 _forward = new Vector3();
     private Vector3 _right = new Vector3();
     private Vector3 _relativeDir = new Vector3();
+    private Vector3 _camRotDeg = new Vector3();
+    private Vector3 _playerRotDeg = new Vector3();
 
     // Components
     private Camera3D _camera3D;
@@ -40,6 +42,8 @@ public partial class Player : CharacterBody3D
         {
             GD.PushError("null");
         }
+        // Hide and lock Mouse cursor
+        Input.MouseMode = Input.MouseModeEnum.Captured;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -78,6 +82,32 @@ public partial class Player : CharacterBody3D
         // Jumping
         if (Input.IsActionPressed("ui_accept") && IsOnFloor())
             _vel.Y = _jumpForce;
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        if (@event is InputEventMouseMotion mouseMotion)
+        {
+            _mouseDelta = mouseMotion.Relative;
+        }
+    }
+
+    public override void _Process(double delta)
+    {
+        // Rotate Camera along the X axis
+        _camRotDeg = _camera3D.RotationDegrees;
+        _camRotDeg.X -= _mouseDelta.Y * _sensitivity * (float)delta;
         
+        // Clamp Camera X rotation axis
+        _camRotDeg.X = Mathf.Clamp(_camRotDeg.X, _minLookAngle, _maxLookAngle);
+        _camera3D.RotationDegrees = _camRotDeg;
+        
+        // Rotate the Player along the Y axis
+        _playerRotDeg = RotationDegrees;
+        _playerRotDeg.Y -= _mouseDelta.X * _sensitivity * (float)delta;
+        RotationDegrees = _playerRotDeg;
+        
+        // Reset Mouse delta vector
+        _mouseDelta = new Vector2();
     }
 }
