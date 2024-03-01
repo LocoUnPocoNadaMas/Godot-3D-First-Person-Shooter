@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3cm4miwfftgo"]
+
+[ext_resource type="ArrayMesh" uid="uid://do4duig4vwnsc" path="res://Assets/Models/Weapon/ammo_pistol.obj" id="1_ffoaf"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ft1it"]
+radius = 0.03
+height = 0.11
+
+[node name="Bullet" type="Area3D"]
+
+[node name="AmmoPistol" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0, 0)
+mesh = ExtResource("1_ffoaf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_ft1it")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
