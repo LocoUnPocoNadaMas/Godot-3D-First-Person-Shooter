@@ -77,6 +77,7 @@ public partial class Enemy : CharacterBody3D
 
     private void Die()
     {
+        _player.ScoreAdd(_scoreToGive);
         QueueFree();
     }
 }

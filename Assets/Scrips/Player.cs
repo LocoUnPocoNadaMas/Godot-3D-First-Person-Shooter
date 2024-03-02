@@ -34,6 +34,7 @@ public partial class Player : CharacterBody3D
     private Camera3D _camera3D;
     private Node3D _muzzle;
     private PackedScene _bulletScene;
+    private Ui _ui;
 
     public override void _Ready()
     {
@@ -42,11 +43,25 @@ public partial class Player : CharacterBody3D
         // Hide and lock Mouse cursor
         Input.MouseMode = Input.MouseModeEnum.Captured;
         _bulletScene = ResourceLoader.Load<PackedScene>("res://Assets/Prefabs/bullet.tscn");
+        _ui = GetNode<Ui>("/root/Main/CanvasLayer/UI");
         
-        if ((_camera3D == null) || _muzzle == null || _bulletScene == null)
+        if ((_camera3D == null) || (_muzzle == null) || (_bulletScene == null) || (_ui == null))
         {
             GD.PushError("null");
             GetTree().Quit();
+        }
+        else
+        {
+            /* Error:
+             * void Godot3DFirstPersonShooter.Assets.Scrips.Ui.BarHealthUpdate(int, int):
+             * System.NullReferenceException: Object reference not set to an instance of an object.
+             * i got a promise of instance? idk but I guess there is a better way to solve this than
+             * changing the order of the objects in the main scene...
+             */
+            // Set the ui
+            _ui.BarHealthUpdate(_curHp, _maxHp);
+            _ui.TxtAmmoUpdate(_ammo);
+            _ui.TxtScoreUpdate(_score);
         }
     }
 
@@ -125,11 +140,13 @@ public partial class Player : CharacterBody3D
         GetNode("/root/Main").AddChild(bullet);
         bullet.GlobalTransform = _muzzle.GlobalTransform;
         _ammo -= 1;
+        _ui.TxtAmmoUpdate(_ammo);
     }
 
     public void TakeDamage(int damage)
     {
         _curHp -= damage;
+        _ui.BarHealthUpdate(_curHp, _maxHp);
         if (_curHp <= 0)
             Die();
     }
@@ -137,5 +154,11 @@ public partial class Player : CharacterBody3D
     private void Die()
     {
         GetTree().ReloadCurrentScene();
+    }
+
+    public void ScoreAdd(int amount)
+    {
+        _score += amount;
+        _ui.TxtScoreUpdate(_score);
     }
 }

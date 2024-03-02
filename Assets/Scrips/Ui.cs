@@ -20,19 +20,19 @@ public partial class Ui : Control
         }
     }
 
-    private void BarHealthUpdate(int curHp, int maxHp)
+    public void BarHealthUpdate(int curHp, int maxHp)
     {
         _barHealth.MaxValue = maxHp;
         _barHealth.Value = curHp;
         
     }
 
-    private void TxtAmmoUpdate(int ammo)
+    public void TxtAmmoUpdate(int ammo)
     {
         _txtAmmo.Text = "Ammo: " + ammo;
     }
 
-    private void TxtScoreUpdate(int score)
+    public void TxtScoreUpdate(int score)
     {
         _txtScore.Text = "Score: " + score;
     }
