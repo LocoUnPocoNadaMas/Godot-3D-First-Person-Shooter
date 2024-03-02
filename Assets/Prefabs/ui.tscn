@@ -39,7 +39,7 @@ theme_override_fonts/font = ExtResource("2_c05hj")
 theme_override_font_sizes/font_size = 30
 text = "Ammo: 50"
 
-[node name="txtAmmo2" type="Label" parent="."]
+[node name="txtScore" type="Label" parent="."]
 layout_mode = 0
 offset_left = 50.0
 offset_top = 494.0
