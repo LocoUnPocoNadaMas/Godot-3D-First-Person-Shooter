@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dpfyci073cq2j"]
+[gd_scene load_steps=15 format=3 uid="uid://dpfyci073cq2j"]
 
 [ext_resource type="ArrayMesh" uid="uid://lxc24m8kca87" path="res://Assets/Models/Environment/Ground.obj" id="1_ptyf8"]
 [ext_resource type="PackedScene" uid="uid://bbfhvg0rokkpv" path="res://Assets/Prefabs/tree_1.tscn" id="2_nbkhu"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cxt7f6s0obj40" path="res://Assets/Prefabs/player.tscn" id="5_8t5fe"]
 [ext_resource type="PackedScene" uid="uid://dnoeuoi8yh1od" path="res://Assets/Prefabs/enemy.tscn" id="6_jp37w"]
 [ext_resource type="PackedScene" uid="uid://be8xprbijr1rt" path="res://Assets/Prefabs/ui.tscn" id="7_444uo"]
+[ext_resource type="PackedScene" uid="uid://cluxkb2d7rxgb" path="res://Assets/Prefabs/pickup_ammo.tscn" id="8_dpgk4"]
+[ext_resource type="PackedScene" uid="uid://dd2q8yfvkw1gg" path="res://Assets/Prefabs/pickup_health.tscn" id="9_j42mc"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_g7mlr"]
 data = PackedVector3Array(0, 0, 0, 3, 0.3, 0, 3, 0, 0, 3, 0.3, 0, 0, 0, 0, 0, 0.3, 0, 0, 0.3, -3, 3, 0.3, 0, 0, 0.3, 0, 3, 0.3, 0, 0, 0.3, -3, 3, 0.3, -3, 3, 0, -3, 3, 0.3, 0, 3, 0.3, -3, 3, 0.3, 0, 3, 0, -3, 3, 0, 0, 3, 0, -3, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, -3, 0, 0, -3, 0, 0.3, -3, 0, 0, 0, 0, 0, -3, 0, 0, 0, 0, 0.3, -3, 0, 0.3, 0, 3, 0, -3, 0, 0.3, -3, 0, 0, -3, 0, 0.3, -3, 3, 0, -3, 3, 0.3, -3)
@@ -209,3 +211,9 @@ environment = SubResource("Environment_kh4hb")
 
 [node name="Enemy" parent="." instance=ExtResource("6_jp37w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4359, -4.58956e-06, -10.8818)
+
+[node name="Pickup_Ammo" parent="." instance=ExtResource("8_dpgk4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48085, 1, 6.87246)
+
+[node name="Pickup_Health" parent="." instance=ExtResource("9_j42mc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.30307, 1, 7.02465)
