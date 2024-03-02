@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://be8xprbijr1rt"]
+
+[ext_resource type="Texture2D" uid="uid://cbndyk0r15o1p" path="res://Assets/UI/UI_Square.png" id="1_0o2kl"]
+[ext_resource type="FontFile" uid="uid://bjjhhmvs5ylcg" path="res://Assets/Font/Ubuntu-Regular.ttf" id="2_c05hj"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="barHealth" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -71.0
+offset_right = 250.0
+offset_bottom = -39.0
+grow_vertical = 0
+value = 61.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_0o2kl")
+texture_progress = ExtResource("1_0o2kl")
+tint_under = Color(0.211765, 0.211765, 0.211765, 1)
+tint_progress = Color(1, 0, 0, 1)
+
+[node name="txtAmmo" type="Label" parent="."]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 534.0
+offset_right = 188.0
+offset_bottom = 568.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_c05hj")
+theme_override_font_sizes/font_size = 30
+text = "Ammo: 50"
+
+[node name="txtAmmo2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 494.0
+offset_right = 188.0
+offset_bottom = 528.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_c05hj")
+theme_override_font_sizes/font_size = 30
+text = "Score: 500"
