@@ -29,6 +29,10 @@ sky = SubResource("Sky_u7m1e")
 
 [node name="Main" type="Node3D"]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("7_444uo")]
+
 [node name="Environment" type="Node3D" parent="."]
 
 [node name="Ground" type="MeshInstance3D" parent="Environment"]
@@ -205,7 +209,3 @@ environment = SubResource("Environment_kh4hb")
 
 [node name="Enemy" parent="." instance=ExtResource("6_jp37w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4359, -4.58956e-06, -10.8818)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="UI" parent="CanvasLayer" instance=ExtResource("7_444uo")]
