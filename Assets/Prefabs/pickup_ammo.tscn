@@ -5,6 +5,7 @@
 
 [node name="Pickup_Ammo" instance=ExtResource("1_rwwbc")]
 _type = 1
+_amount = 10
 
 [node name="AmmoBoxModel" parent="." index="1" instance=ExtResource("2_p0v54")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

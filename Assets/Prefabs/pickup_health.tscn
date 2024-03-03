@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://tv1ocg7t88at" path="res://Assets/Models/Pickups/HealthPackModel.dae" id="2_hl0fg"]
 
 [node name="Pickup_Health" instance=ExtResource("1_75tkr")]
+_amount = 5
 
 [node name="HealthPackModel" parent="." index="1" instance=ExtResource("2_hl0fg")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

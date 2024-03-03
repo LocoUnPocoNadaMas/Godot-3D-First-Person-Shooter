@@ -161,4 +161,18 @@ public partial class Player : CharacterBody3D
         _score += amount;
         _ui.TxtScoreUpdate(_score);
     }
+
+    public void HealthAdd(int amount)
+    {
+        _curHp += amount;
+        if (_curHp > _maxHp)
+            _curHp = _maxHp;
+        _ui.BarHealthUpdate(_curHp, _maxHp);
+    }
+    
+    public void AmmoAdd(int amount)
+    {
+        _ammo += amount;
+        _ui.TxtAmmoUpdate(_ammo);
+    }
 }

@@ -24,4 +24,23 @@ public partial class PickupAbstract : Area3D
     {
         _startPosY = Position.Y;
     }
+
+    private void _OnBodyEntered(Node3D body)
+    {
+        if (body.Name == "Player")
+        {
+            Pickup(body as Player);
+            QueueFree();
+        }
+    }
+
+    private void Pickup(Player body)
+    {
+        if(_type == PickupType.Health)
+            body.HealthAdd(_amount);
+        else
+        {
+            body.AmmoAdd(_amount);
+        }
+    }
 }
