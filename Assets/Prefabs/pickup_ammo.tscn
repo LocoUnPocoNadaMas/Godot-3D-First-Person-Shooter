@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cluxkb2d7rxgb"]
+
+[ext_resource type="PackedScene" uid="uid://chx5mv088ermt" path="res://Assets/Prefabs/pickup_abstract.tscn" id="1_rwwbc"]
+[ext_resource type="PackedScene" uid="uid://bv8op7oqkrag5" path="res://Assets/Models/Pickups/AmmoBoxModel.dae" id="2_p0v54"]
+
+[node name="Pickup_Ammo" instance=ExtResource("1_rwwbc")]
+
+[node name="AmmoBoxModel" parent="." index="1" instance=ExtResource("2_p0v54")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
